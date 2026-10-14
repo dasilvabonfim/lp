@@ -82,17 +82,10 @@ textarea {
     letter-spacing: 0.08em;
 }
 
-.header-badge,
 .status {
     border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 700;
-}
-
-.header-badge {
-    padding: 7px 11px;
-    background: var(--accent-soft);
-    color: var(--accent-dark);
 }
 
 .page-grid {
@@ -101,63 +94,10 @@ textarea {
     padding-block: 48px;
 }
 
-.hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 190px;
-    align-items: end;
-    gap: 28px;
-}
-
-.hero h1 {
-    max-width: 760px;
-    margin: 5px 0 12px;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.04;
-    letter-spacing: -0.045em;
-}
-
-.hero-copy {
-    max-width: 720px;
+.page-title h1 {
     margin: 0;
-    color: var(--muted);
-    font-size: 1.05rem;
-}
-
-code {
-    color: var(--accent-dark);
-}
-
-.eyebrow {
-    margin: 0;
-    color: var(--accent-dark);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.stat-card {
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.72);
-}
-
-.stat-card strong,
-.stat-card span {
-    display: block;
-}
-
-.stat-card strong {
-    color: var(--accent);
-    font-size: 2.6rem;
-    line-height: 1;
-}
-
-.stat-card span {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 0.82rem;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    letter-spacing: -0.035em;
 }
 
 .card {
@@ -181,7 +121,7 @@ code {
 }
 
 .section-heading h2 {
-    margin: 4px 0 0;
+    margin: 0;
     font-size: 1.55rem;
     letter-spacing: -0.02em;
 }
@@ -432,47 +372,6 @@ td small {
     text-align: center;
 }
 
-.empty-state > span {
-    color: var(--accent);
-    font-size: 2.3rem;
-}
-
-.empty-state p {
-    margin: 5px 0 0;
-    color: var(--muted);
-}
-
-.technical-card {
-    overflow: hidden;
-}
-
-.technical-card summary {
-    padding: 18px 22px;
-    font-weight: 750;
-    cursor: pointer;
-}
-
-.technical-card pre {
-    margin: 0;
-    overflow-x: auto;
-    padding: 22px;
-    background: #17242d;
-    color: #dcf6ed;
-    font-size: 0.83rem;
-}
-
-.technical-card code {
-    color: inherit;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    padding-block: 0 36px;
-    color: var(--muted);
-    font-size: 0.78rem;
-}
-
 .sr-only {
     position: absolute;
     width: 1px;
@@ -489,33 +388,18 @@ td small {
         padding-block: 32px;
     }
 
-    .hero,
     .form-grid {
         grid-template-columns: 1fr;
-    }
-
-    .stat-card {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .stat-card span {
-        margin: 0;
     }
 
     .field-wide {
         grid-column: auto;
     }
 
-    .section-heading,
-    .footer {
+    .section-heading {
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .header-badge {
-        display: none;
-    }
 }
 

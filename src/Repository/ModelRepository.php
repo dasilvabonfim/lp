@@ -18,7 +18,6 @@ final class ModelRepository
     ) {
     }
 
-    /** @return list<Model> */
     public function all(): array
     {
         $statement = $this->connection->query(
@@ -91,7 +90,6 @@ final class ModelRepository
         $statement->execute(['id' => $id]);
     }
 
-    /** @param array<string, mixed> $row */
     private function hydrate(array $row): Model
     {
         $class = $this->metadata->modelClass();

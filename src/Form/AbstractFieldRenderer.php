@@ -69,7 +69,6 @@ abstract class AbstractFieldRenderer implements FieldRenderer
         );
     }
 
-    /** @param array<string, string|int|float|bool> $attributes */
     protected function serializeAttributes(array $attributes): string
     {
         $parts = [];

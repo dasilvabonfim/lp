@@ -93,31 +93,22 @@ function optionLabel(ModelMetadata $metadata, string $fieldName, mixed $value): 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MiniForm PHP - Cadastro automático</title>
+    <title>Cadastro de produtos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
-            <a class="brand" href="index.php" aria-label="MiniForm PHP - início">
+            <a class="brand" href="index.php" aria-label="Cadastro de produtos - início">
                 <span class="brand-mark">&lt;/&gt;</span>
-                <span><strong>MiniForm</strong><small>PHP 8.2</small></span>
+                <span><strong>Produtos</strong><small>PHP</small></span>
             </a>
-            <span class="header-badge">Reflection + ORM</span>
         </div>
     </header>
 
     <main class="container page-grid">
-        <section class="hero">
-            <div>
-                <p class="eyebrow">Mini-framework acadêmico</p>
-                <h1>Um modelo. Formulário e banco gerados automaticamente.</h1>
-                <p class="hero-copy">Os atributos da classe <code>Produto</code> definem os campos, as regras de validação e as colunas SQLite.</p>
-            </div>
-            <div class="stat-card">
-                <strong><?= count($metadata->fields()) ?></strong>
-                <span>campos descobertos por Reflection</span>
-            </div>
+        <section class="page-title">
+            <h1>Cadastro de produtos</h1>
         </section>
 
         <?php if ($flash !== null): ?>
@@ -126,10 +117,7 @@ function optionLabel(ModelMetadata $metadata, string $fieldName, mixed $value): 
 
         <section class="card form-card">
             <div class="section-heading">
-                <div>
-                    <p class="eyebrow"><?= $model->id === null ? 'Novo registro' : 'Editando #' . $model->id ?></p>
-                    <h2><?= $model->id === null ? 'Cadastrar produto' : 'Atualizar produto' ?></h2>
-                </div>
+                <h2><?= $model->id === null ? 'Novo produto' : 'Editar produto #' . $model->id ?></h2>
                 <span>Campos com * são obrigatórios</span>
             </div>
             <?= $formBuilder->render($metadata, $model, $values, $errors, Csrf::token()) ?>
@@ -137,18 +125,13 @@ function optionLabel(ModelMetadata $metadata, string $fieldName, mixed $value): 
 
         <section class="card table-card">
             <div class="section-heading">
-                <div>
-                    <p class="eyebrow">Persistência automática</p>
-                    <h2>Produtos cadastrados</h2>
-                </div>
+                <h2>Produtos cadastrados</h2>
                 <span><?= count($products) ?> registro(s)</span>
             </div>
 
             <?php if ($products === []): ?>
                 <div class="empty-state">
-                    <span aria-hidden="true">◇</span>
                     <strong>Nenhum produto cadastrado</strong>
-                    <p>Preencha o formulário acima para testar o mini-framework.</p>
                 </div>
             <?php else: ?>
                 <div class="table-scroll">
@@ -188,16 +171,7 @@ function optionLabel(ModelMetadata $metadata, string $fieldName, mixed $value): 
             <?php endif; ?>
         </section>
 
-        <details class="card technical-card">
-            <summary>Ver SQL gerado pelo framework</summary>
-            <pre><code><?= Html::escape($schema->sql($metadata)) ?></code></pre>
-        </details>
     </main>
-
-    <footer class="container footer">
-        <span>UTFPR · Aspectos de Linguagens de Programação</span>
-        <span>PHP · HTML · SQL</span>
-    </footer>
 </body>
 </html>
 

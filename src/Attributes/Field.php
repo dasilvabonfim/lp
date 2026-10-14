@@ -9,9 +9,6 @@ use Attribute;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 final readonly class Field
 {
-    /**
-     * @param array<string, string> $options
-     */
     public function __construct(
         public string $label,
         public string $type = 'text',

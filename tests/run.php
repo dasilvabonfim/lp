@@ -26,13 +26,13 @@ function check(bool $condition, string $message): void
 }
 
 $metadata = new ModelMetadata(Produto::class);
-check($metadata->tableName() === 'produtos', 'Reflection encontra o nome da tabela');
-check(count($metadata->fields()) === 6, 'Reflection encontra todos os campos');
+check($metadata->tableName() === 'produtos', 'Nome da tabela');
+check(count($metadata->fields()) === 6, 'Campos do modelo');
 
 $validator = new Validator();
 $invalid = $validator->validate($metadata, []);
-check(!$invalid->isValid(), 'Campos obrigatórios são validados');
-check(isset($invalid->errors['nome'], $invalid->errors['preco']), 'Erros são associados aos campos');
+check(!$invalid->isValid(), 'Validação obrigatória');
+check(isset($invalid->errors['nome'], $invalid->errors['preco']), 'Erros por campo');
 
 $valid = $validator->validate($metadata, [
     'nome' => 'Livro de PHP',
@@ -42,13 +42,13 @@ $valid = $validator->validate($metadata, [
     'envio' => 'normal',
     'disponivel' => '1',
 ]);
-check($valid->isValid(), 'Dados válidos passam pela validação');
-check($valid->values['preco'] === 79.9, 'Número com vírgula é normalizado');
+check($valid->isValid(), 'Dados válidos');
+check($valid->values['preco'] === 79.9, 'Conversão numérica');
 
 $form = (new FormBuilder())->render($metadata, new Produto(), [], [], 'token-de-teste');
-check(str_contains($form, 'name="categoria"'), 'Formulário contém o campo select');
-check(str_contains($form, 'type="radio"'), 'Formulário contém botões de opção');
-check(str_contains($form, 'type="checkbox"'), 'Formulário contém caixa de seleção');
+check(str_contains($form, 'name="categoria"'), 'Campo select');
+check(str_contains($form, 'type="radio"'), 'Campo radio');
+check(str_contains($form, 'type="checkbox"'), 'Campo checkbox');
 
 if (extension_loaded('pdo_sqlite')) {
     $pdo = new PDO('sqlite::memory:', null, null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -61,10 +61,10 @@ if (extension_loaded('pdo_sqlite')) {
         $field->property->setValue($product, $valid->values[$field->name]);
     }
     $repository->save($product);
-    check($product->id === 1, 'ORM insere e devolve o identificador');
-    check(count($repository->all()) === 1, 'ORM recupera o registro salvo');
+    check($product->id === 1, 'Inserção');
+    check(count($repository->all()) === 1, 'Consulta');
     $repository->delete(1);
-    check($repository->all() === [], 'ORM exclui o registro');
+    check($repository->all() === [], 'Exclusão');
 } else {
     echo "[AVISO] pdo_sqlite não disponível; testes do repositório foram ignorados.\n";
 }

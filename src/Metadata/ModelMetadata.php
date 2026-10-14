@@ -12,17 +12,12 @@ use ReflectionClass;
 
 final class ModelMetadata
 {
-    /** @var class-string<Model> */
     private string $modelClass;
 
     private string $tableName;
 
-    /** @var list<FieldMetadata> */
     private array $fields = [];
 
-    /**
-     * @param class-string<Model> $modelClass
-     */
     public function __construct(string $modelClass)
     {
         if (!is_subclass_of($modelClass, Model::class)) {
@@ -60,7 +55,6 @@ final class ModelMetadata
         }
     }
 
-    /** @return class-string<Model> */
     public function modelClass(): string
     {
         return $this->modelClass;
@@ -71,7 +65,6 @@ final class ModelMetadata
         return $this->tableName;
     }
 
-    /** @return list<FieldMetadata> */
     public function fields(): array
     {
         return $this->fields;

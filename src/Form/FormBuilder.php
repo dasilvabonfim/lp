@@ -10,10 +10,8 @@ use RuntimeException;
 
 final class FormBuilder
 {
-    /** @var list<FieldRenderer> */
     private array $renderers;
 
-    /** @param list<FieldRenderer>|null $renderers */
     public function __construct(?array $renderers = null)
     {
         $this->renderers = $renderers ?? [
@@ -24,10 +22,6 @@ final class FormBuilder
         ];
     }
 
-    /**
-     * @param array<string, mixed> $values
-     * @param array<string, string> $errors
-     */
     public function render(
         ModelMetadata $metadata,
         Model $model,
